@@ -22,6 +22,8 @@ Board: char[1][3]
 
 API CALLS:
 
+//INITIALIZATION
+
 //GAME CREATION
 createGame:
 	Args:	userID
@@ -37,6 +39,12 @@ joinGame:
 				)
 				no(FAIL, Game doesn't exist)
 	Return:	Success/Fail, Reason
+	
+resetGame:
+	Args:	gameID
+	Does:	Checks if gameID exists
+				yes(resets all board positions to empty, sets nextPlayer = P1)
+				no(FAIL, Game doesn't exist)
 
 //VALIDATION
 checkGameExists:
