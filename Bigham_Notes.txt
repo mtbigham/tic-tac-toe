@@ -1,0 +1,89 @@
+BOARD LAYOUT:
+Board: char[1][3]
+//EXAMPLE BOARD POSITIONS
+[				[				[
+ [-,-,-],		 [-,X,O],		 [O,X,O],
+ [-,-,-],  --->	 [X,O,-],  --->	 [X,O,X],  //DRAW
+ [-,-,-]		 [X,-,-]		 [X,X,O]
+]				]				]
+
+[
+ [X,O,X],
+ [O,X,-], //P1 WINS!
+ [O,-,X]
+]
+
+[
+ [O,-,X],
+ [O,X,X], //P2 WINS!
+ [O,-,-]
+]
+
+
+API CALLS:
+
+//GAME CREATION
+createGame:
+	Args:	userID
+	Does:	Creates a new game, creates gameID, adds userID as player1
+	Return:	gameID
+	
+joinGame:
+	Args:	userID, gameID
+	Does:	Checks if gameID exists
+				yes(Checks if player2 already set
+					yes(FAIL, Game is full)
+					no(adds userID as player2, SUCCESS)
+				)
+				no(FAIL, Game doesn't exist)
+	Return:	Success/Fail, Reason
+
+//VALIDATION
+checkGameExists:
+	Args:	gameID
+	Does:	Checks if gameID exists
+				yes(SUCCESS, Game exists)
+				no(FAIL, Game doesn't exist)
+	Return:	Success/Fail, Reason
+	
+checkTurn:
+	Args:	gameID
+	Does:	Checks if game exists
+			yes(
+				Checks if game is over
+				yes(FAIL, Game is over)
+				no(
+					Checks which user played last
+					SUCCESS, Game in progress, userID
+				)
+			)
+			no(FAIL, Game doesn't exist)
+	Return:	Success/Fail, Reason, userID of user who needs to play next (current turn's user)
+	
+checkBoard:
+	Args:	gameID
+	Does:	Checks if gameID exists
+				yes(SUCCESS, BOARD)
+				no(FAIL)
+	Return:	Success/Fail, char[][] Board
+
+//GAMEPLAY
+play:
+	Args:	gameID, userID, x-pos, y-pos
+	Does:	Checks if gameID exists
+				yes(
+					Checks if userID corresponds to current turn's userID
+						yes(
+							Checks validity of x-pos and y-pos
+								open && valid(
+									places userID's piece at (x-pos,y-pos)
+									Checks if Game is over
+										yes(SUCCESS, You Win!)
+										no(SUCCESS, Your move has been placed.)
+								)
+								else(FAIL, Out of Bounds/Space not Available)
+						)
+						no(FAIL, Not your turn)
+				)
+				no(FAIL, gameID doesn't exist)
+	Return:	Success/Fail, Reason
