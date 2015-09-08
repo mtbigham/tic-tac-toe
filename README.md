@@ -36,6 +36,9 @@ Curl POST commands require that any " characters must be escaped (/") in my impl
       * ```X```: An X piece is located at this position
       * ```O```: An O piece is located at this position
 3. Create Players: ```curl -v --data '{name}' http://localhost:8080/GameRunner/{uri}/players```
-  * Games will return error codes if an attempt is made to play a move without any players assigned to that game.
+  * Games will return an error code if an attempt is made to play a move without any players assigned to that game.
 4. Create Moves: ```curl -v -H "Content-Type: application/json" --data '{\"col\":{col},\"row\":{row},\"name\":\"{playerName}\"}' http://localhost:8080/GameRunner/{uri}/move```
-5. 
+  * Replace {row} and {col} with integers denoting the position that you'd like to place a piece at, and {playerName} with the name of one of the two players assigned to the game.
+  * A successful move returns 201 Created
+  * An unsuccessful move will return a code and a message denoting what went wrong (Not your turn/invalid position/unavailable position/game over)
+5. Now repeat until you either check the game's state and see that status no longer equals PLAYING, or until a move request returns a Game Over message!
