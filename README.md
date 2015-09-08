@@ -37,4 +37,5 @@ Curl POST commands require that any " characters must be escaped (/") in my impl
       * ```O```: An O piece is located at this position
 3. Create Players: ```curl -v --data '{name}' http://localhost:8080/GameRunner/{uri}/players```
   * Games will return error codes if an attempt is made to play a move without any players assigned to that game.
-4. Create Moves: ```curl -H "Content-Type: application/json" -X POST --data '{\"col\":2,\"row\":2,\"name\":\"Taylor\"}' http://localhost:8080/GameRunner/{uri}/move```
+4. Create Moves: ```curl -v -H "Content-Type: application/json" --data '{\"col\":{col},\"row\":{row},\"name\":\"{playerName}\"}' http://localhost:8080/GameRunner/{uri}/move```
+5. 
