@@ -30,6 +30,11 @@ public class GameResource {
     public PlayerListResource getPlayers(){
         return new PlayerListResource(game.getPlayers(), uriInfo);
     }
+    
+    @Path("move")
+    public MoveResource getMoves(){
+        return new MoveResource(game);
+    }
 
     public URI getUri() {
         return uriInfo.getAbsolutePathBuilder().path(Integer.toString(game.getID())).build();
