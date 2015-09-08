@@ -28,6 +28,13 @@ Curl POST commands require that any " characters must be escaped (/") in my impl
     * ```players```: An array containing names and id's of players that have been created and assigned to this game
     * ```nextPlayer```: An integer denoting which player id needs to play next (-1 if no players added yet)
     * ```board```: A 2D array containing the current value of each cell on the board
+      * The board can be more easily read by imagining that the three arrays are stacked vertically with coordinates of the form (row, column):
+        * [ 0,0 | 0,1 | 0,2 ]
+        * [ 1,0 | 1,1 | 1,2 ]
+        * [ 2,0 | 2,1 | 2,2 ]
+      * ```EMPTY```: No player has played a piece at this location yet
+      * ```X```: An X piece is located at this position
+      * ```O```: An O piece is located at this position
 3. Create Players: ```curl -v --data '{name}' http://localhost:8080/GameRunner/{uri}/players```
   * Games will return error codes if an attempt is made to play a move without any players assigned to that game.
 4. Create Moves: ```curl -H "Content-Type: application/json" -X POST --data '{\"col\":2,\"row\":2,\"name\":\"Taylor\"}' http://localhost:8080/GameRunner/{uri}/move```
