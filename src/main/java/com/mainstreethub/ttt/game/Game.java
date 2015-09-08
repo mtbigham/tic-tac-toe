@@ -65,8 +65,20 @@ public class Game{
 		return status;
 	}
 	
+	//used to test working change of status
+	public void setStatus(GameStatus status){
+		this.status = status;
+	}
+	
 	public List<Player> getPlayers(){
 		return playerList;
+	}
+	
+	//used to test working addition of players
+	public void addPlayer(Player player){
+		if(playerList.size() < 2){
+			playerList.add(player);
+		}
 	}
 	
 	public int getNumMoves(){
@@ -162,6 +174,9 @@ public class Game{
 		}
 		else if(checkDraw()){
 			status = GameStatus.DRAW;
+		}
+		else{
+			status = GameStatus.PLAYING;
 		}
 	}
 	

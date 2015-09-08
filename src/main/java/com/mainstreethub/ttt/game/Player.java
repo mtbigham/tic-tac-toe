@@ -20,7 +20,24 @@ public class Player{
 	}
 	
 	@JsonProperty
-	public String getID(){
+	public int getID(){
 		return id;
+	}
+	
+	@Override
+	public String toString(){
+		return "[ name:"+getName()+",id:"+getID()+" ]";
+	}
+	
+	@Override
+	//used by the PlayerHealthCheck to compare Player objects
+	public boolean equals(Object o){
+		if(o instanceof Player){
+			Player p = (Player) o;
+			if(this.id == p.id && this.name.equals(p.name)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
