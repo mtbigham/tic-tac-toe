@@ -1,8 +1,11 @@
 com\mainstreethub\ttt\game\GameStatus.class
-com\mainstreethub\ttt\game\CellStatus.class
+com\mainstreethub\ttt\game\Player.class
 com\mainstreethub\ttt\api\Saying.class
 com\mainstreethub\ttt\tttApplication.class
 com\mainstreethub\ttt\tttConfig.class
 com\mainstreethub\ttt\game\Cell.class
-com\mainstreethub\ttt\game\Board.class
-com\mainstreethub\ttt\resources\gameRunner.class
+com\mainstreethub\ttt\resources\GameResource.class
+com\mainstreethub\ttt\resources\PlayerListResource.class
+com\mainstreethub\ttt\resources\PlayerResource.class
+com\mainstreethub\ttt\game\Game.class
+com\mainstreethub\ttt\resources\GameRunner.class

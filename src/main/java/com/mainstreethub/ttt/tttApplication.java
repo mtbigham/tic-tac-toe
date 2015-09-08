@@ -3,7 +3,7 @@ package com.mainstreethub.ttt;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
-import com.mainstreethub.ttt.resources.gameRunner;
+import com.mainstreethub.ttt.resources.GameRunner;
 
 public class tttApplication extends Application<tttConfig>{
 	public static void main(String[] args) throws Exception{
@@ -12,8 +12,8 @@ public class tttApplication extends Application<tttConfig>{
 	
 	@Override
 	public void run(tttConfig config, Environment environment){
-		//initialize gameRunner resource
-		final gameRunner gr = new gameRunner();
+		//initialize GameRunner resource
+		final GameRunner gr = new GameRunner();
 		environment.jersey().register(gr);
 	}
 }
